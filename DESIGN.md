@@ -37,7 +37,6 @@
 
 #### 메서드
 
-- Patient(String name, int age)
 - getName()
 - getAge()
 
