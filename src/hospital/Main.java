@@ -21,9 +21,12 @@ public class Main {
                     service.showPatients();
                     break;
                 case 3:
-                    delete();
+                    update();
                     break;
                 case 4:
+                    delete();
+                    break;
+                case 5:
                     return;
             }
         }
@@ -33,8 +36,9 @@ public class Main {
         System.out.println("===== 병원 시스템 =====");
         System.out.println("1. 환자 등록");
         System.out.println("2. 환자 조회");
-        System.out.println("3. 환자 삭제");
-        System.out.println("4. 종료");
+        System.out.println("3. 환자 수정");
+        System.out.println("4. 환자 삭제");
+        System.out.println("5. 종료");
     }
 
     public void register() {
@@ -48,12 +52,26 @@ public class Main {
         service.registerPatient(name, age);
     }
 
-    public void delete() {
-        // 입력
-        System.out.print("삭제할 이름 입력: ");
+    public void update() {
+        System.out.print("수정할 ID 입력: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        System.out.println("새 이름 입력: ");
         String name = sc.nextLine();
 
-        service.deletePatient(name);
+        System.out.println("새 나이 입력: ");
+        int age = sc.nextInt();
+
+        service.updatePatient(id, name, age);
+    }
+
+    public void delete() {
+        // 입력
+        System.out.print("삭제할 ID 입력: ");
+        int id = sc.nextInt();
+
+        service.deletePatient(id);
     }
 
     public static void main(String[] args) {
